@@ -42,13 +42,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Fetch latest release tag for pihole
-        uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        uses: pozetroninc/github-action-get-latest-release@v0.8.0
         id: latest-tag-pihole
         with:
           repository: pi-hole/docker-pi-hole
 
       - name: Fetch latest release tag 
-        uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        uses: pozetroninc/github-action-get-latest-release@v0.8.0
         id: latest-tag
         with:
           repository: devzwf/mytest
