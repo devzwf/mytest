@@ -59,7 +59,7 @@ jobs:
 
       - name: Increment version number
         id: increment_version
-        run: echo "version=$(printf \"%03d\" $((10#${{ steps.extract_version.outputs.version }} + 1)))" >> $GITHUB_OUTPUT
+        run: echo version=$(printf "%03d" $((10#${{ steps.extract_version.outputs.version }} + 1))) >> $GITHUB_OUTPUT
 
 
       - name: Build and push
