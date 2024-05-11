@@ -55,11 +55,11 @@ jobs:
 
       - name: Extract version number
         id: extract_version
-        run: echo ::set-output name=version::$(echo ${{ steps.latest-tag.outputs.release }} | awk -F'-z' '{print $2}')
+        run: echo "version=$(echo ${{ steps.latest-tag.outputs.release }} | awk -F'-z' '{print $2}')" >> $GITHUB_OUTPUT 
 
       - name: Increment version number
         id: increment_version
-        run: echo ::set-output name=version::$(printf "%03d" $((10#${{ steps.extract_version.outputs.version }} + 1)))
+        run: echo "version=$(printf \"%03d\" $((10#${{ steps.extract_version.outputs.version }} + 1)))" >> $GITHUB_OUTPUT
 
 
       - name: Build and push
