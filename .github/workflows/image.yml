@@ -46,7 +46,17 @@ jobs:
         id: latest-tag-pihole
         with:
           repository: pi-hole/docker-pi-hole
+      - name: Get latest tag
+        id: latest_tag
+        uses: jacobtomlinson/gha-get-docker-hub-tags@0.1.1
+        with:
+          org: 'devzwf'  # Docker Hub user or organisation name
+          repo: 'mytest'  # Docker Hub repository name
 
+      # Optionally check the tag we got back
+      - name: Check outputs
+        run: |
+          echo "Latest Image Tag - ${{ steps.latest_tag.outputs.tag }}"
       - name: Fetch latest release tag 
         uses: pozetroninc/github-action-get-latest-release@v0.8.0
         id: latest-tag
